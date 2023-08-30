@@ -22,7 +22,7 @@ Install aws-sdk for js
 
 ### Setting up the account
 
-1. amplify configure
+1. `amplify configure`
 2. select region (recommend eu-central-1)
 3. DON'T PROVIDE AWS MANAGEMENT CONSOLE
 4. Attach policies AdministratorAccess-Amplify
