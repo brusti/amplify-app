@@ -105,4 +105,11 @@ Install aws-sdk for js
 - check console `amplify add auth`
 - import styles `@import '~@aws-amplify/ui-angular/theme.css';`
 - wrap todolist component in https://ui.docs.amplify.aws/angular/connected-components/authenticator
-`
+
+## Hosting and deployment
+- `amplify add hosting`
+- select managed hosting
+- in `angular.json`, increase budgets.maximumError to 2mb
+- `amplify publish` 
+- to deploy the application
+- if deployment is failing `amplify configure project` select distribution to dist/amplify-app
