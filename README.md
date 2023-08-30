@@ -41,3 +41,49 @@ Install aws-sdk for js
 - check console to see what was created
 - check amplify folder
 - check amplify project in aws config
+
+## Add amplify dependencies 
+    npm install --save aws-amplify @aws-amplify/ui-angular
+- in `src\app.module.ts` add `AmplifyAuthenticatorModule` to imports
+
+## Create an API
+    amplify add api
+- select GraphQL with simple objects for now
+- check `amplify/backend/api/amplifyapp/schema.graphql`
+- add `@auth(rules: [{ allow: public }])` to the model
+- you can test the api running `amplify console api`
+
+## Connecting FE to BE
+    import { Amplify } from 'aws-amplify';
+    import aws_exports from './aws-exports';
+    Amplify.configure(aws_exports);
+
+- add this to main.ts to enable aws types
+- if aws_exports is not recognized, is because of ts strict mode, rename the file from js to ts
+
+- in `tsconfig.app.json` include node to compiler options
+  
+  "compilerOptions": {
+  "types" : ["node"]
+  }
+- it might be necessary to install `npm i -D @types/node`
+- enable angular forms, in `app.module.ts` add `FormsModule, ReactiveFormsModule`
+
+### Add polyfills
+- get polyfills from git or
+- create `src/polyfills.ts`
+  `(window as any).global = window;
+  (window as any).process = {
+  env: { DEBUG: undefined },
+  };`
+
+- in `angular.json` add to polyfills `scr/polyfills.ts`
+- in `tsconfig.app.json` to `files` add `scr/polyfills.ts`
+
+
+### Generate todoList
+    npx ng generate component todo
+- just get the code from git or create a component that connects to the database using `API.service` subscribe to new added items and unsubscribe when the item is deleted
+
+
+
