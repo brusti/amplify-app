@@ -1,1 +1,10 @@
-<app-todo-list></app-todo-list>
+<amplify-authenticator>
+  <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+    <app-todo-list></app-todo-list>
+    <button (click)="signOut()">Sign Out</button>
+  </ng-template>
+</amplify-authenticator>

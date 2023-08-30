@@ -54,11 +54,15 @@ Install aws-sdk for js
 - you can test the api running `amplify console api`
 
 ## Connecting FE to BE
-    import { Amplify } from 'aws-amplify';
-    import aws_exports from './aws-exports';
-    Amplify.configure(aws_exports);
+- create aws-exports.d.ts
+    `declare const awsmobile: Record<string, any>
+    export default awsmobile;`
 
 - add this to main.ts to enable aws types
+  `import { Amplify } from 'aws-amplify';
+  import aws_exports from './aws-exports';
+  Amplify.configure(aws_exports);`
+
 - if aws_exports is not recognized, is because of ts strict mode, rename the file from js to ts
 
 - in `tsconfig.app.json` include node to compiler options
@@ -85,5 +89,20 @@ Install aws-sdk for js
     npx ng generate component todo
 - just get the code from git or create a component that connects to the database using `API.service` subscribe to new added items and unsubscribe when the item is deleted
 
+## Authentication
+### Add cognito
+    amplify add auth
+- select default
+- sign in with username
+    
+- `amplify push` to publish your changes
+- check console for cognito
 
-
+### Create login component
+- add ui-angular dependency `npm i @aws-amplify/ui-angular`
+- generate auth infrastructure `amplify add auth`
+- push changes to aws `amplify add auth`
+- check console `amplify add auth`
+- import styles `@import '~@aws-amplify/ui-angular/theme.css';`
+- wrap todolist component in https://ui.docs.amplify.aws/angular/connected-components/authenticator
+`
