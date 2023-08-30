@@ -113,3 +113,8 @@ Install aws-sdk for js
 - `amplify publish` 
 - to deploy the application
 - if deployment is failing `amplify configure project` select distribution to dist/amplify-app
+
+## Clean environment
+    amplify delete
+    amplify push
+    amplify publish
